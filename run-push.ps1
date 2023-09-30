@@ -1,7 +1,7 @@
 function Push-Package {
   param($pkg)
 	nuget push `
-		$(Resolve-Path -Relative $pkg) `
+		$pkg `
 		$NUGET_KEY `
 		-SkipDuplicate `
 		-source $NUGET_FEED
