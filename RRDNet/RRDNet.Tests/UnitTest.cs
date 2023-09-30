@@ -2,6 +2,9 @@ using System.Drawing;
 using RRDNet.Core;
 using RRDNet.Graph;
 using Xunit.Abstractions;
+using Xunit;
+using System.IO;
+using System;
 
 namespace RRDNet.Tests;
 
@@ -262,7 +265,6 @@ public class UnitTest
         fs.Read(memBuffer, 0, memBuffer.Length);
         fs.Close();
         StreamReader memoryReader = new(new MemoryStream(memBuffer));
-
 
         //StreamReader diskReader = File.OpenText("stress-test.txt");
         //string allLines = diskReader.ReadToEnd();

@@ -7,6 +7,21 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RRDNet", "RRDNet\RRDNet.csp
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RRDNet.Tests", "RRDNet.Tests\RRDNet.Tests.csproj", "{6058B3BB-EA5D-4617-B109-F36FCF87983E}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{52C5C813-6C40-4867-9E15-F21EF3186744}"
+	ProjectSection(SolutionItems) = preProject
+		..\.editorconfig = ..\.editorconfig
+		..\.gitignore = ..\.gitignore
+		..\.github\workflows\build.yml = ..\.github\workflows\build.yml
+		..\common.props = ..\common.props
+		..\common.targets = ..\common.targets
+		..\LICENSE.txt = ..\LICENSE.txt
+		..\package.props = ..\package.props
+		..\README.md = ..\README.md
+		..\run-pack.ps1 = ..\run-pack.ps1
+		..\run-push.ps1 = ..\run-push.ps1
+		..\run-test.ps1 = ..\run-test.ps1
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

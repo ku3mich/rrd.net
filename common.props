@@ -1,0 +1,16 @@
+<Project>
+	<PropertyGroup>
+		<RootNamespace>RRDNet</RootNamespace>
+		<Authors>Serhii Kuzmychov</Authors>
+		<Company />
+		<RepositoryUrl>https://github.com/ku3mich/rrd.net</RepositoryUrl>
+		<EnableNETAnalyzers>true</EnableNETAnalyzers>
+		<TargetFramework>net6</TargetFramework>
+		<Nullable>disable</Nullable>
+	</PropertyGroup>
+
+	<PropertyGroup>
+		<CommonTargets>$([MSBuild]::GetPathOfFileAbove(common.targets))</CommonTargets>
+	</PropertyGroup>
+	<Import Project="$(CommonTargets)" Condition="exists('$(CommonTargets)')" />
+</Project>

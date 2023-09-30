@@ -1,4 +1,4 @@
-# RRDNet(past RrdSharp) README
+# RRDNet(past RrdSharp)
 
 I want to give a special thanks to Sasa Markovic and
 Arne Vandamme of the JRobin project (http://www.jrobin.org)
@@ -16,5 +16,6 @@ add support for both file types.
 
 I'll add instructions with the 0.1 release.
 
-* project converted to modern NET7 network
+* project converted to modern NET6 network
 * RRDSharp renamed to RRDNet
+* Graphs and all stuff related to System.Drawing works only in Windows
