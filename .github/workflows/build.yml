@@ -16,6 +16,7 @@ jobs:
         DOTNET_CLI_TELEMETRY_OPTOUT: true
         NUGET_FEED: https://api.nuget.org/v3/index.json
         NUGET_KEY: ${{ secrets.NUGET_ORG_API_KEY }}
+        DOTNET_INSTALL_DIR: '.\.dotnet'
     steps:
       - name: Set up JDK 17
         uses: actions/setup-java@v3
@@ -25,16 +26,37 @@ jobs:
       - uses: actions/checkout@v3
         with:
           fetch-depth: 0
-      - name: Setup dotnet
+
+      - name: Cache dotnet
+        id: cache-dotnet
+        uses: actions/cache@v3
+        with:
+          path: ${{ env.DOTNET_INSTALL_DIR }}
+          key: ${{ runner.os }}-dotnet
+          restore-keys: ${{ runner.os }}-dotnet
+
+      - name: Install dotnet
+        if: ${{ steps.cache-dotnet.outputs.cache-hit != 'true' }}
         uses: actions/setup-dotnet@v3
         with:
-          dotnet-version: 6.x.x
+            dotnet-version: 7.0.x
+
+      - name: Check default dotnet version
+        run: dotnet --version
+
+      - name: Set installed/cached dotnet path [${{ env.DOTNET_INSTALL_DIR }}]
+        run: echo "${{ env.DOTNET_INSTALL_DIR }}" | Out-File -FilePath $ENV:GITHUB_PATH -Encoding utf8 -Append
+
+      - name: Check installed/cached dotnet version
+        run: dotnet --version
+
       - name: Cache SonarCloud packages
         uses: actions/cache@v3
         with:
           path: ~\sonar\cache
           key: ${{ runner.os }}-sonar
           restore-keys: ${{ runner.os }}-sonar
+
       - name: Cache SonarCloud scanner
         id: cache-sonar-scanner
         uses: actions/cache@v3
@@ -42,12 +64,14 @@ jobs:
           path: .\.sonar\scanner
           key: ${{ runner.os }}-sonar-scanner
           restore-keys: ${{ runner.os }}-sonar-scanner
+
       - name: Install SonarCloud scanner
         if: steps.cache-sonar-scanner.outputs.cache-hit != 'true'
         shell: powershell
         run: |
           New-Item -Path .\.sonar\scanner -ItemType Directory
           dotnet tool update dotnet-sonarscanner --tool-path .\.sonar\scanner
+
       - name: Build and analyze
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
@@ -58,7 +82,8 @@ jobs:
           dotnet build --configuration Release RRDNet
           powershell -f run-test.ps1 
           .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
-      - name: Pack
-        run: powershell -f run-pack.ps1
-      - name: nupkg push
-        run: powershell -f run-push.ps1
+
+      - name: Pack and push nugets
+        run: |
+            powershell -f run-pack.ps1
+            powershell -f run-push.ps1
