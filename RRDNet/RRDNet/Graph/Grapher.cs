@@ -170,7 +170,7 @@ namespace RRDNet.Graph
 				
 			PlotOverlay( graphics );					// draw a possible image overlay
 				
-			PlotSignature( graphics );					// draw the JRobin signature
+			// PlotSignature( graphics );					// draw the JRobin signature
 
 			
 			// Dispose graphics context
@@ -221,7 +221,7 @@ namespace RRDNet.Graph
 			
 			PlotOverlay( graphics );					// draw a possible image overlay
 			
-			PlotSignature( graphics );					// draw the JRobin signature
+			// PlotSignature( graphics );					// draw the JRobin signature
 
 		
 			// Dispose graphics context
