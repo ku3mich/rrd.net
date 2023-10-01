@@ -170,9 +170,6 @@ namespace RRDNet.Graph
 				
 			PlotOverlay( graphics );					// draw a possible image overlay
 				
-			// PlotSignature( graphics );					// draw the JRobin signature
-
-			
 			// Dispose graphics context
 			graphics.Dispose();
 			
@@ -221,9 +218,6 @@ namespace RRDNet.Graph
 			
 			PlotOverlay( graphics );					// draw a possible image overlay
 			
-			// PlotSignature( graphics );					// draw the JRobin signature
-
-		
 			// Dispose graphics context
 			graphics.Dispose();
 		
@@ -904,24 +898,6 @@ namespace RRDNet.Graph
 											);
 			g.RotateTransform( (float) 90.0 );
 		}
-
-		private void PlotSignature( Graphics g )
-		{
-			float angle;
-			if ( !graphDef.ShowSignature )
-				return;
-			
-			string sig = "RrdSharp v. 0.1"; 
-			defaultBrush.Color = Color.Gray;
-			Font sigfnt =  new Font("Courier New", 9, FontStyle.Regular,GraphicsUnit.Pixel);
-		
-			angle = (float) 90.0;
-			//g.TextRenderingHint = TextRenderingHint.AntiAliasGridFit;
-			g.RotateTransform( angle );
-			g.DrawString( sig, sigfnt, defaultBrush, 5,  -imgWidth + 2 );	
-			//g.TextRenderingHint = TextRenderingHint.AntiAlias;
-			g.RotateTransform((float) -90.0 );
-		}	
 
 		private void GraphString( Graphics g, Font fnt, string str, int x, int y )
 		{
