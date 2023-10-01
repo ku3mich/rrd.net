@@ -75,7 +75,7 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         shell: powershell
         run: |
-          .\.sonar\scanner\dotnet-sonarscanner begin /k:"ku3mich_rrd.net" /o:"ku3mich" /d:sonar.token="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.cs.opencover.reportsPaths=coverage.opencover.xml
+          .\.sonar\scanner\dotnet-sonarscanner begin /k:"ku3mich_rrd.net" /o:"ku3mich" /d:sonar.token="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.cs.opencover.reportsPaths=**/coverage.opencover.xml
           dotnet build --configuration Release RRDNet
           powershell -f run-test.ps1 
           .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
