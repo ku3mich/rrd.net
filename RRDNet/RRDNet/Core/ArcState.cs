@@ -128,14 +128,14 @@ namespace RRDNet.Core
 		/// <summary>
 		/// 
 		/// </summary>
-		/// <param name="other"></param>
-		public void CopyStateTo(IRrdUpdatable other)
+		/// <param name="updater"></param>
+		public void CopyStateTo(IRrdUpdatable updater)
 		{
-			if(!(other is ArcState)) 
+			if(!(updater is ArcState)) 
 			{
-				throw new RrdException("Cannot copy ArcState object to " + other.ToString());
+				throw new RrdException("Cannot copy ArcState object to " + updater.ToString());
 			}
-			ArcState arcState = (ArcState) other;
+			ArcState arcState = (ArcState) updater;
 			arcState.accumValue.Set(accumValue.Get());
 			arcState.nanSteps.Set(nanSteps.Get());
 }

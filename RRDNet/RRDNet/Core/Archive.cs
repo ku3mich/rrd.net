@@ -425,14 +425,14 @@ namespace RRDNet.Core
 		/// <summary>
 		/// 
 		/// </summary>
-		/// <param name="other"></param>
-		public void CopyStateTo(IRrdUpdatable other)
+		/// <param name="updater"></param>
+		public void CopyStateTo(IRrdUpdatable updater)
 		{
-			if(!(other is Archive))
+			if(!(updater is Archive))
 			{
-				throw new RrdException("Cannot copy Archive object to " + other.ToString());
+				throw new RrdException("Cannot copy Archive object to " + updater.ToString());
 			}
-			Archive arc = (Archive) other;
+			Archive arc = (Archive) updater;
 			if(!arc.consolFun.Get().Equals(consolFun.Get()))
 			{
 				throw new RrdException("Incompatible consolidation functions");

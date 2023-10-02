@@ -36,7 +36,7 @@ namespace RRDNet.Core
 	/// </remarks>
 	public class Header : IRrdUpdatable
 	{
-		internal static readonly string SIGNATURE = "RRDSharp version 0.1";
+		internal static readonly string SIGNATURE = "RRDNet0";
 		//static readonly string RRDTOOL_VERSION = "0001";
 
 		private RrdDb parentDb;
@@ -153,14 +153,14 @@ namespace RRDNet.Core
 		/// <summary>
 		/// 
 		/// </summary>
-		/// <param name="other"></param>
-		public void CopyStateTo(IRrdUpdatable other)
+		/// <param name="updater"></param>
+		public void CopyStateTo(IRrdUpdatable updater)
 		{
-			if(!(other is Header)) 
+			if(!(updater is Header)) 
 			{
-				throw new RrdException("Cannot copy Header object to " + other.ToString());
+				throw new RrdException("Cannot copy Header object to " + updater.ToString());
 			}
-			Header header = (Header) other; 
+			Header header = (Header) updater; 
 			header.lastUpdateTime.Set(lastUpdateTime.Get());
 		}
 	}

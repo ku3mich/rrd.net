@@ -524,14 +524,14 @@ namespace RRDNet.Core
 		/// <summary>
 		/// 
 		/// </summary>
-		/// <param name="other"></param>
-		public void CopyStateTo(IRrdUpdatable other)
+		/// <param name="updater"></param>
+		public void CopyStateTo(IRrdUpdatable updater)
 		{
-			if(!(other is RrdDb))
+			if(!(updater is RrdDb))
 			{
-				throw new RrdException("Cannot copy RrdDb object to " + other.ToString());
+				throw new RrdException("Cannot copy RrdDb object to " + updater.ToString());
 			}
-			RrdDb otherRrd = (RrdDb) other;
+			RrdDb otherRrd = (RrdDb) updater;
 			header.CopyStateTo(otherRrd.header);
 			for(int i = 0; i < datasources.Length; i++) {
 				int j = Util.GetMatchingDatasourceIndex(this, i, otherRrd);

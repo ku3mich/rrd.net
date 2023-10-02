@@ -93,7 +93,7 @@ namespace RRDNet.Core
 		{
 			set
 			{
-				this.Rows = value;
+				rows = value;
 			}
 			get
 			{

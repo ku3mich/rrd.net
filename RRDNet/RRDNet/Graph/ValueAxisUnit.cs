@@ -68,7 +68,7 @@ namespace RRDNet.Graph
 			{
 				while ( minPoint < lower ) minPoint += gridStep;
 				while ( majPoint < lower ) majPoint += labelStep;
-			} 
+            } 
 			else 
 			{
 				while ( minPoint > lower ) minPoint -= gridStep;

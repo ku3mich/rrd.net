@@ -5,10 +5,11 @@ using Xunit.Abstractions;
 using Xunit;
 using System.IO;
 using System;
+using System.Reflection.PortableExecutable;
 
 namespace RRDNet.Tests;
 
-public class UnitTest
+public partial class UnitTest
 {
     public ITestOutputHelper Console { get; }
 
@@ -16,6 +17,7 @@ public class UnitTest
     {
         Console = console;
     }
+
 
     [Fact]
     public void Test1()

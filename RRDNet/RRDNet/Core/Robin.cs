@@ -190,14 +190,14 @@ namespace RRDNet.Core
 		/// <summary>
 		/// 
 		/// </summary>
-		/// <param name="other"></param>
-		public void CopyStateTo(IRrdUpdatable other)
+		/// <param name="updater"></param>
+		public void CopyStateTo(IRrdUpdatable updater)
 		{
-			if(!(other is Robin)) 
+			if(!(updater is Robin)) 
 			{
-				throw new RrdException("Cannot copy Robin object to " + other.ToString());
+				throw new RrdException("Cannot copy Robin object to " + updater.ToString());
 			}
-			Robin robin = (Robin) other;
+			Robin robin = (Robin) updater;
 			int rowsDiff = rows - robin.rows;
 			if(rowsDiff == 0) 
 			{

@@ -413,8 +413,8 @@ namespace RRDNet.Graph
 			
 			GridRange range		= graphDef.GridRange;
 			bool rigid			= ( range != null ? range.Rigid : false );
-			double lowerValue	= ( range != null ? range.LowerValue : Double.MaxValue );
-			double upperValue	= ( range != null ? range.UpperValue : Double.MinValue );
+			double lowerValue	= ( range != null ? range.LowerValue : 0 );
+			double upperValue	= ( range != null ? range.UpperValue : 0 );
 			
 			// For autoscale, detect lower and upper limit of values
 			PlotDef[] plotDefs 	= graphDef.PlotDefs;
